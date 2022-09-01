@@ -5,7 +5,6 @@ import java.nio.ByteBuffer;
 import java.nio.channels.Pipe;
 
 public class PipeDemo {
-
     public static void main(String[] args) throws Exception {
         Pipe pipe = Pipe.open();
         Thread threadA = new Thread(new ThreadA(pipe));
@@ -18,9 +17,7 @@ public class PipeDemo {
             e.printStackTrace();
         }
     }
-
 }
-
 
 class ThreadA implements Runnable {
 
@@ -29,7 +26,6 @@ class ThreadA implements Runnable {
     public ThreadA(Pipe pipe){
         this.pipe = pipe;
     }
-
     @Override
     public void run() {
 
@@ -52,7 +48,6 @@ class ThreadB implements Runnable {
     public ThreadB(Pipe pipe){
         this.pipe = pipe;
     }
-
     @Override
     public void run() {
         try {
@@ -60,7 +55,6 @@ class ThreadB implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         try {
             Pipe.SourceChannel sourceChannel = pipe.source();
